@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--                                                                                                     -->
+<!-- Copyright (c) 2014, Arjuna Technologies Limited, Newcastle-upon-Tyne, England;                      -->
+<!--                     Newcastle University, Newcastle-upon-Tyne, England;                             -->
+<!--                     Red Hat Middleware LLC, Newcastle-upon-Tyne, England. All rights reserved.      -->
+<!--                                                                                                     -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.risbic</groupId>
+    <artifactId>dataflow-utils</artifactId>
+    <version>1.0.0p1m1</version>
+
+    <packaging>pom</packaging>
+
+    <name>DataFlow Utilities</name>
+
+    <properties>
+        <version.com.arjuna.databroker>1.0.0p1m1</version.com.arjuna.databroker>
+
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <modules>
+        <module>intraconnect-basic</module> 
+    </modules>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+            </plugin>
+        </plugins>
+    </build>
+</project>
