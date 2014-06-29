@@ -1,7 +1,7 @@
 DataFlow_Utilities
 ==================
 
-DataFlow Utilities
+This project contains utility classes which support the implementation of Data Flows and Data Flow Nodes.
 
 Licence
 -------
