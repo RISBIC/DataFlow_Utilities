@@ -49,6 +49,7 @@
 
     <modules>
         <module>intraconnect-basic</module> 
+        <module>dataflow-utils-ear</module> 
     </modules>
 
     <repositories>
