@@ -22,9 +22,7 @@ public class BasicDataProvider<T> implements DataProvider<T>
 
     public BasicDataProvider(DataFlowNode dataFlowNode)
     {
-        logger.log(Level.INFO, "BasicDataProvider: " + dataFlowNode);
-
-        _lastValue = null;
+        logger.log(Level.FINE, "BasicDataProvider: " + dataFlowNode);
 
         _dataFlowNode  = dataFlowNode;
         _dataConsumers = new LinkedList<DataConsumer<T>>();
@@ -57,16 +55,9 @@ public class BasicDataProvider<T> implements DataProvider<T>
     @Override
     public void produce(T data)
     {
-        logger.log(Level.INFO, "BasicDataProvider.produce: [" + data.toString() + "]");
-        _lastValue = data;
+        for (DataConsumer<T> dataConsumer: _dataConsumers)
+            dataConsumer.consume(this, data);
     }
-
-    public T getLastValue()
-    {
-        return _lastValue;
-    }
-
-    private T _lastValue;
 
     private DataFlowNode          _dataFlowNode;
     private List<DataConsumer<T>> _dataConsumers;

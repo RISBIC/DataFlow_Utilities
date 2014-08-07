@@ -37,7 +37,6 @@ public class BasicDataConsumer<T> implements DataConsumer<T>
     {
         try
         {
-            logger.log(Level.INFO, "BasicDataConsumer.consume: [" + data.toString() + "]");
             getMethod(_dataFlowNode.getClass(),_methodName).invoke(_dataFlowNode, data);
         }
         catch (Throwable throwable)
