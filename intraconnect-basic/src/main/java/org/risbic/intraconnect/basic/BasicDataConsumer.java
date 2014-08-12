@@ -9,11 +9,11 @@ package org.risbic.intraconnect.basic;
 import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.arjuna.databroker.data.DataConsumer;
 import com.arjuna.databroker.data.DataFlowNode;
 import com.arjuna.databroker.data.DataProvider;
+import com.arjuna.databroker.data.connector.ObserverDataConsumer;
 
-public class BasicDataConsumer<T> implements DataConsumer<T>
+public class BasicDataConsumer<T> implements ObserverDataConsumer<T>
 {
     private static final Logger logger = Logger.getLogger(BasicDataConsumer.class.getName());
 

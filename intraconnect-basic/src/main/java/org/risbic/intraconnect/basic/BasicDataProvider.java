@@ -14,9 +14,10 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.arjuna.databroker.data.DataConsumer;
 import com.arjuna.databroker.data.DataFlowNode;
-import com.arjuna.databroker.data.DataProvider;
+import com.arjuna.databroker.data.connector.ObservableDataProvider;
+import com.arjuna.databroker.data.connector.ObserverDataConsumer;
 
-public class BasicDataProvider<T> implements DataProvider<T>
+public class BasicDataProvider<T> implements ObservableDataProvider<T>
 {
     private static final Logger logger = Logger.getLogger(BasicDataProvider.class.getName());
 
@@ -25,7 +26,7 @@ public class BasicDataProvider<T> implements DataProvider<T>
         logger.log(Level.FINE, "BasicDataProvider: " + dataFlowNode);
 
         _dataFlowNode  = dataFlowNode;
-        _dataConsumers = new LinkedList<DataConsumer<T>>();
+        _dataConsumers = new LinkedList<ObserverDataConsumer<T>>();
     }
 
     @Override
@@ -35,19 +36,19 @@ public class BasicDataProvider<T> implements DataProvider<T>
     }
 
     @Override
-    public Collection<DataConsumer<T>> getDataConsumers()
+    public Collection<ObserverDataConsumer<T>> getDataConsumers()
     {
         return Collections.unmodifiableList(_dataConsumers);
     }
 
     @Override
-    public void addDataConsumer(DataConsumer<T> dataConsumer)
+    public void addDataConsumer(ObserverDataConsumer<T> dataConsumer)
     {
         _dataConsumers.add(dataConsumer);
     }
 
     @Override
-    public void removeDataConsumer(DataConsumer<T> dataConsumer)
+    public void removeDataConsumer(ObserverDataConsumer<T> dataConsumer)
     {
         _dataConsumers.remove(dataConsumer);
     }
@@ -59,6 +60,6 @@ public class BasicDataProvider<T> implements DataProvider<T>
             dataConsumer.consume(this, data);
     }
 
-    private DataFlowNode          _dataFlowNode;
-    private List<DataConsumer<T>> _dataConsumers;
+    private DataFlowNode                  _dataFlowNode;
+    private List<ObserverDataConsumer<T>> _dataConsumers;
 }
