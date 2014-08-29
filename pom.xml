@@ -73,6 +73,7 @@
             </dependency>
             -->
             <!-- WildFly-8.1.0.Final -->
+
             <dependency>
                 <groupId>org.wildfly</groupId>
                 <artifactId>wildfly-dist</artifactId>
