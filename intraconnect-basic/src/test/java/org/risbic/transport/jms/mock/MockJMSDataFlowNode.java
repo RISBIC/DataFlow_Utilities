@@ -11,64 +11,47 @@
  * permissions and limitations under the License.
  */
 
-package org.risbic.intraconnect.jms.mock;
+package org.risbic.transport.jms.mock;
 
-import javax.jms.JMSException;
-import java.util.UUID;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 import com.arjuna.databroker.data.DataFlowNode;
-import org.risbic.intraconnect.jms.JMSDataProvider;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
  */
 
-public class MockJMSDataProvider implements JMSDataProvider
+public class MockJMSDataFlowNode implements DataFlowNode
 {
+   private List<Serializable> data;
+
+   public MockJMSDataFlowNode()
+   {
+      data = new ArrayList<Serializable>();
+   }
+
    @Override
-   public UUID getId()
+   public String getName()
+   {
+      return "MockDataFlowNode";
+   }
+
+   @Override
+   public Map<String, String> getProperties()
    {
       return null;
    }
 
-   @Override
-   public DataFlowNode getDataFlowNode()
+   public List<Serializable> getData()
    {
-      return null;
+      return data;
    }
 
-   @Override
-   public void produce(Object data)
+   public void consume(Serializable obj)
    {
-   }
-
-   @Override
-   public void start() throws JMSException
-   {
-
-   }
-
-   @Override
-   public void stop() throws JMSException
-   {
-
-   }
-
-   @Override
-   public void pause()
-   {
-
-   }
-
-   @Override
-   public void restart() throws JMSException
-   {
-
-   }
-
-   @Override
-   public void destroy() throws JMSException
-   {
-
+      data.add(obj);
    }
 }

@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.risbic.intraconnect.jms;
+package org.risbic.transport.jms;
 
 import javax.jms.JMSException;
 import javax.jms.MessageProducer;
@@ -19,6 +19,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.risbic.transport.jms.mock.MockJMSDataFlowNode;
@@ -63,7 +64,7 @@ public class JMSDataConsumerImplTest extends AbstractJMSDataTransportTest
 
       // Wait for messages to arrive
       Thread.sleep(2000);
-      assertEquals(messages, dfNode.getData());
+      Assert.assertEquals(messages, dfNode.getData());
    }
 
    public void sendMessages(List<Serializable> messages) throws JMSException
