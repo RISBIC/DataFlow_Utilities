@@ -44,8 +44,8 @@
 
     <modules>
         <module>intraconnect-basic</module> 
+        <module>intraconnect-jms</module> 
         <module>dataflow-utils-ear</module>
-        <module>JEEJMSDataTransport</module>
     </modules>
 
     <repositories>

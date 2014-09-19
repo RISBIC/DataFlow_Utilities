@@ -12,20 +12,20 @@
     <parent>
         <groupId>org.risbic</groupId>
         <artifactId>dataflow-utils</artifactId>
-        <version>1.0.0p1m1</version>
+        <version>1.0.0p1m2l</version>
     </parent>
 
-    <artifactId>jms-data-transport</artifactId>
+    <artifactId>intraconnect-jms</artifactId>
 
     <packaging>jar</packaging>
 
-    <name>JMS Data Transport Classes</name>
+    <name>Intraconnect JMS DataFlow Utilities</name>
 
     <dependencies>
         <dependency>
             <groupId>com.arjuna.databroker</groupId>
             <artifactId>data-common</artifactId>
-            <version>1.0.0p1m1</version>
+            <version>${version.com.arjuna.databroker}</version>
             <scope>provided</scope>
         </dependency>
        <dependency>

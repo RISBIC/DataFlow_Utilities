@@ -37,8 +37,8 @@ public class JMSDataTransportFlowTest extends AbstractJMSDataTransportTest
       MockJMSDataFlowNode consumingNode = new MockJMSDataFlowNode();
 
       JMSDataProvider dataProvider = new JMSDataProviderImpl(connectionFactory, topic, "jms","password");
-      JMSDataConsumerImpl dataConsumer = new JMSDataConsumerImpl(consumingNode, "consume", MockJMSDataFlowNode.class,
-                                                                 connectionFactory, topic, dataProvider, "jms", "password");
+      JMSDataConsumerImpl dataConsumer = new JMSDataConsumerImpl(consumingNode, "consume", connectionFactory,
+                                                                 topic, dataProvider, "jms", "password");
 
       dataProvider.start();
       dataConsumer.start();

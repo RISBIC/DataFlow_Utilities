@@ -20,18 +20,21 @@ import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
+
 import java.io.Serializable;
 
 import com.arjuna.databroker.data.DataConsumer;
 import com.arjuna.databroker.data.DataFlowNode;
 import com.arjuna.databroker.data.DataProvider;
+import com.arjuna.databroker.data.connector.ObservableDataProvider;
+
 import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
  */
 
-public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSDataTransport implements DataConsumer
+public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSDataTransport<T> implements DataConsumer<T>
 {
    private static final Logger logger = Logger.getLogger(JMSDataConsumerImpl.class.getName());
 
@@ -41,27 +44,18 @@ public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSData
 
    private String methodName;
 
-   private Class<T> dataClass;
-
-   public JMSDataConsumerImpl(DataFlowNode dfNode, String methodName, Class<T> dataClass, ConnectionFactory connectionFactory,
-                              Destination destination, JMSDataProvider producer, String username, String password)
+   public JMSDataConsumerImpl(DataFlowNode dfNode, String methodName, ConnectionFactory connectionFactory, Destination destination,
+                              JMSDataProvider producer, String username, String password)
    {
       super(connectionFactory, destination, username, password);
       this.dfNode = dfNode;
       this.methodName = methodName;
-      this.dataClass = dataClass;
    }
 
    @Override
    public DataFlowNode getDataFlowNode()
    {
       return null;
-   }
-
-   // We don't need this method in JMS.  Consumption happens as messages appear in the destination.
-   @Override
-   public void consume(DataProvider dataProvider, Object data)
-   {
    }
 
    @Override
