@@ -13,11 +13,13 @@
 
 package org.risbic.transport.jms;
 
+import javax.annotation.Resource;
 import javax.jms.Connection;
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Session;
+import javax.jms.Topic;
 import java.io.Serializable;
 
 import org.jboss.logging.Logger;
@@ -30,8 +32,6 @@ public abstract class AbstractJMSDataTransport<T extends Serializable> implement
 {
    private static final Logger logger = Logger.getLogger(AbstractJMSDataTransport.class.getName());
 
-   protected ConnectionFactory connectionFactory;
-
    protected Connection connection;
 
    protected Session session;
@@ -42,12 +42,14 @@ public abstract class AbstractJMSDataTransport<T extends Serializable> implement
 
    protected String password;
 
-   public AbstractJMSDataTransport(ConnectionFactory connectionFactory, Destination destination, String username,String password)
+   @Resource(lookup = "java:comp/DefaultJMSConnectionFactory")
+   private static ConnectionFactory connectionFactory;
+
+   @Resource(lookup = "jms/topic/risbic")
+   private static Topic topic;
+
+   public AbstractJMSDataTransport()
    {
-      this.destination = destination;
-      this.connectionFactory = connectionFactory;
-      this.username = username;
-      this.password = password;
    }
 
    @Override

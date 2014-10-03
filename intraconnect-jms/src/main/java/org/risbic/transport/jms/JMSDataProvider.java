@@ -16,12 +16,13 @@ package org.risbic.transport.jms;
 import java.util.UUID;
 
 import com.arjuna.databroker.data.DataProvider;
+import com.arjuna.databroker.data.connector.NamedDataProvider;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
  */
 
-public interface JMSDataProvider<Serializable> extends DataProvider<Serializable>, JMSDataTransportLifeCycle
+public interface JMSDataProvider<Serializable> extends JMSDataTransportLifeCycle, NamedDataProvider<Serializable>
 {
    public UUID getId();
 }
