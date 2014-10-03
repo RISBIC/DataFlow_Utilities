@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.risbic.intraconnect.jms;
+package org.risbic.transport.jms;
 
 import javax.jms.JMSException;
 import javax.jms.Message;
@@ -23,7 +23,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.junit.Before;
 import org.junit.Test;
-import org.risbic.intraconnect.jms.mock.MockJMSDataFlowNode;
+import org.risbic.transport.jms.mock.MockJMSDataFlowNode;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>

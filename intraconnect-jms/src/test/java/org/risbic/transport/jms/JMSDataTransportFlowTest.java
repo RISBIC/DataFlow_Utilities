@@ -11,12 +11,12 @@
  * permissions and limitations under the License.
  */
 
-package org.risbic.intraconnect.jms;
+package org.risbic.transport.jms;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import org.risbic.intraconnect.jms.mock.MockJMSDataFlowNode;
+import org.risbic.transport.jms.mock.MockJMSDataFlowNode;
 
 import org.junit.Before;
 
@@ -37,8 +37,8 @@ public class JMSDataTransportFlowTest extends AbstractJMSDataTransportTest
       MockJMSDataFlowNode consumingNode = new MockJMSDataFlowNode();
 
       JMSDataProvider dataProvider = new JMSDataProviderImpl(connectionFactory, topic, "jms","password");
-      JMSDataConsumerImpl dataConsumer = new JMSDataConsumerImpl(consumingNode, "consume", MockJMSDataFlowNode.class,
-                                                                 connectionFactory, topic, dataProvider, "jms", "password");
+      JMSDataConsumerImpl dataConsumer = new JMSDataConsumerImpl(consumingNode, "consume", connectionFactory,
+                                                                 topic, dataProvider, "jms", "password");
 
       dataProvider.start();
       dataConsumer.start();

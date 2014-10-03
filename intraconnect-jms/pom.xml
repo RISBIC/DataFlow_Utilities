@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--                                                                                                     -->
+<!-- Copyright (c) 2014, Arjuna Technologies Limited, Newcastle-upon-Tyne, England;                      -->
+<!--                     Newcastle University, Newcastle-upon-Tyne, England;                             -->
+<!--                     Red Hat Middleware LLC, Newcastle-upon-Tyne, England. All rights reserved.      -->
+<!--                                                                                                     -->
+
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.risbic</groupId>
+        <artifactId>dataflow-utils</artifactId>
+        <version>1.0.0p1m2l</version>
+    </parent>
+
+    <artifactId>intraconnect-jms</artifactId>
+
+    <packaging>jar</packaging>
+
+    <name>Intraconnect JMS DataFlow Utilities</name>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.arjuna.databroker</groupId>
+            <artifactId>data-common</artifactId>
+            <version>${version.com.arjuna.databroker}</version>
+            <scope>provided</scope>
+        </dependency>
+       <dependency>
+          <groupId>javax.jms</groupId>
+          <artifactId>jms</artifactId>
+          <version>1.1</version>
+       </dependency>
+       <dependency>
+          <groupId>org.jboss.spec</groupId>
+          <artifactId>jboss-javaee-6.0</artifactId>
+          <version>1.0.0.Final</version>
+          <type>pom</type>
+          <scope>provided</scope>
+       </dependency>
+       <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.8.1</version>
+          <scope>test</scope>
+       </dependency>
+       <dependency>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging</artifactId>
+          <version>3.1.0.GA</version>
+       </dependency>
+       <dependency>
+          <groupId>org.hornetq</groupId>
+          <artifactId>hornetq-jms-client</artifactId>
+          <version>2.4.3.Final</version>
+       </dependency>
+       <dependency>
+          <groupId>org.wildfly</groupId>
+          <artifactId>wildfly-ejb-client-bom</artifactId>
+          <version>8.1.0.Final</version>
+          <type>pom</type>
+          <scope>compile</scope>
+       </dependency>
+    </dependencies>
+
+   <build>
+      <plugins>
+         <plugin>
+            <artifactId>maven-surefire-plugin</artifactId>
+            <version>2.12</version>
+            <configuration>
+               <systemProperties>
+                  <property>
+                     <name>java.util.logging.manager</name>
+                     <value>org.jboss.logmanager.LogManager</value>
+                  </property>
+               </systemProperties>
+            </configuration>
+         </plugin>
+      </plugins>
+   </build>
+</project>

@@ -9,6 +9,13 @@
     <sub-deployment name="intraconnect-basic.jar">
         <dependencies>
             <module name="deployment.databroker.ear.data-common.jar"/>
+            <module name="deployment.databroker.ear.data-common-jee.jar"/>
+        </dependencies>
+    </sub-deployment>
+    <sub-deployment name="intraconnect-jms.jar">
+        <dependencies>
+            <module name="deployment.databroker.ear.data-common.jar"/>
+            <module name="deployment.databroker.ear.data-common-jee.jar"/>
         </dependencies>
     </sub-deployment>
 </jboss-deployment-structure>

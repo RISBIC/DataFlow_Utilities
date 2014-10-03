@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.risbic.intraconnect.jms;
+package org.risbic.transport.jms;
 
 import javax.jms.ConnectionFactory;
 import javax.jms.Destination;

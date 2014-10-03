@@ -10,7 +10,7 @@ import java.lang.reflect.Method;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.arjuna.databroker.data.DataFlowNode;
-import com.arjuna.databroker.data.DataProvider;
+import com.arjuna.databroker.data.connector.ObservableDataProvider;
 import com.arjuna.databroker.data.connector.ObserverDataConsumer;
 
 public class BasicDataConsumer<T> implements ObserverDataConsumer<T>
@@ -33,7 +33,7 @@ public class BasicDataConsumer<T> implements ObserverDataConsumer<T>
     }
 
     @Override
-    public void consume(DataProvider<T> dataProvider, T data)
+    public void consume(ObservableDataProvider<T> dataProvider, T data)
     {
         try
         {

@@ -11,7 +11,7 @@
  * permissions and limitations under the License.
  */
 
-package org.risbic.intraconnect.jms;
+package org.risbic.transport.jms;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
