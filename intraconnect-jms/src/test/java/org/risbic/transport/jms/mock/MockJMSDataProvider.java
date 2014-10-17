@@ -71,4 +71,10 @@ public class MockJMSDataProvider implements JMSDataProvider
    {
 
    }
+
+   @Override
+   public Object getName(Class nameClass)
+   {
+      return null;
+   }
 }

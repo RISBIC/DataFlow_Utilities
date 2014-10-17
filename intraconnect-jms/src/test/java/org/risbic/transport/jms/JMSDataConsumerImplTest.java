@@ -51,7 +51,7 @@ public class JMSDataConsumerImplTest extends AbstractJMSDataTransportTest
       String methodName = "consume";
       Class clazz = MockJMSDataFlowNode.class;
 
-      JMSDataConsumerImpl dataConsumer = new JMSDataConsumerImpl(dfNode, methodName, connectionFactory, topic, provider, "jms", "password");
+      JMSDataConsumerImpl dataConsumer = new JMSDataConsumerImpl(dfNode, methodName);
       dataConsumer.start();
 
       String message = "Test Message";
