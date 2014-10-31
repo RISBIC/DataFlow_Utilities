@@ -38,8 +38,8 @@ public class JMSDataTransportFactorySetup
     private JMSDataConsumerFactory _jmsDataConsumerFactory;
     private JMSDataProviderFactory _jmsDataProviderFactory;
 
-    @EJB(name="DataConsumerFactoryInventory")
+    @EJB(lookup="java:global/databroker/data-common-jee/DataConsumerFactoryInventory")
     private static DataConsumerFactoryInventory _dataConsumerFactoryInventory;
-    @EJB(name="DataProviderFactoryInventory")
+    @EJB(lookup="java:global/databroker/data-common-jee/DataProviderFactoryInventory")
     private static DataProviderFactoryInventory _dataProviderFactoryInventory;
 }
