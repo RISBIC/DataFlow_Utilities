@@ -13,8 +13,6 @@
 
 package org.risbic.transport.jms;
 
-import javax.jms.ConnectionFactory;
-import javax.jms.Destination;
 import javax.jms.JMSException;
 import javax.jms.Message;
 import javax.jms.MessageConsumer;
@@ -25,16 +23,15 @@ import java.io.Serializable;
 
 import com.arjuna.databroker.data.DataConsumer;
 import com.arjuna.databroker.data.DataFlowNode;
-import com.arjuna.databroker.data.DataProvider;
-import com.arjuna.databroker.data.connector.ObservableDataProvider;
 
+import com.arjuna.databroker.data.connector.ReferrerDataConsumer;
 import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
  */
 
-public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSDataTransport<T> implements DataConsumer<T>
+public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSDataTransport<T> implements ReferrerDataConsumer<T>
 {
    private static final Logger logger = Logger.getLogger(JMSDataConsumerImpl.class.getName());
 
@@ -44,10 +41,8 @@ public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSData
 
    private String methodName;
 
-   public JMSDataConsumerImpl(DataFlowNode dfNode, String methodName, ConnectionFactory connectionFactory, Destination destination,
-                              JMSDataProvider producer, String username, String password)
+   public JMSDataConsumerImpl(DataFlowNode dfNode, String methodName)
    {
-      super(connectionFactory, destination, username, password);
       this.dfNode = dfNode;
       this.methodName = methodName;
    }

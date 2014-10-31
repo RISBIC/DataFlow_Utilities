@@ -30,6 +30,41 @@
             <artifactId>intraconnect-jms</artifactId>
             <version>1.0.0p1m2l</version>
         </dependency>
+       <dependency>
+          <groupId>javax.jms</groupId>
+          <artifactId>jms</artifactId>
+          <version>1.1</version>
+       </dependency>
+       <dependency>
+          <groupId>org.jboss.spec</groupId>
+          <artifactId>jboss-javaee-6.0</artifactId>
+          <version>1.0.0.Final</version>
+          <type>pom</type>
+          <scope>provided</scope>
+       </dependency>
+       <dependency>
+          <groupId>junit</groupId>
+          <artifactId>junit</artifactId>
+          <version>4.8.1</version>
+          <scope>test</scope>
+       </dependency>
+       <dependency>
+          <groupId>org.jboss.logging</groupId>
+          <artifactId>jboss-logging</artifactId>
+          <version>3.1.0.GA</version>
+       </dependency>
+       <dependency>
+          <groupId>org.hornetq</groupId>
+          <artifactId>hornetq-jms-client</artifactId>
+          <version>2.4.3.Final</version>
+       </dependency>
+       <dependency>
+          <groupId>org.wildfly</groupId>
+          <artifactId>wildfly-ejb-client-bom</artifactId>
+          <version>8.1.0.Final</version>
+          <type>pom</type>
+          <scope>compile</scope>
+       </dependency>
     </dependencies>
 
     <build>

@@ -51,7 +51,7 @@ public class JMSDataProviderImplTest extends AbstractJMSDataTransportTest
    {
       MockJMSDataFlowNode dfNode = new MockJMSDataFlowNode();
 
-      JMSDataProviderImpl provider = new JMSDataProviderImpl(connectionFactory, topic, "jms", "password");
+      JMSDataProviderImpl provider = new JMSDataProviderImpl();
       provider.start();
 
       String message = "Test Message";

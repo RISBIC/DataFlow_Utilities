@@ -43,9 +43,8 @@ public class JMSDataProviderImpl<T extends Serializable> extends AbstractJMSData
     * be dynamically subscribed.  Message filters are used to send the correct messages to the Data Consumers.  The
     * filter is currently based on the dfNode name.
     */
-   public JMSDataProviderImpl(ConnectionFactory connectionFactory, Destination destination, String username, String password)
+   public JMSDataProviderImpl()
    {
-      super(connectionFactory, destination, username, password);
       id = UUID.randomUUID();
    }
 
@@ -104,5 +103,15 @@ public class JMSDataProviderImpl<T extends Serializable> extends AbstractJMSData
    public void pause()
    {
 
+   }
+
+   @Override
+   public <N> N getName(Class<N> nameClass)
+   {
+      if (nameClass.isAssignableFrom(String.class))
+      {
+         return (N) id.toString();
+      }
+      throw new RuntimeException("Name Class " + nameClass + " Not Supported");
    }
 }
