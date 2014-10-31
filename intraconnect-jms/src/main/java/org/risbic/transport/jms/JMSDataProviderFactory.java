@@ -17,9 +17,9 @@ public class JMSDataProviderFactory implements DataProviderFactory
     public <T> DataProvider<T> createDataProvider(DataFlowNode dataFlowNode, Class<T> dataClass)
         throws Exception
     {
-    	if (dataClass.isAssignableFrom(Serializable.class))
-    	    return (DataProvider<T>) new JMSDataProviderImpl<Serializable>();
-    	else
-    		return null;
+        if (Serializable.class.isAssignableFrom(dataClass))
+            return (DataProvider<T>) new JMSDataProviderImpl<Serializable>();
+        else
+            return null;
     }
 }

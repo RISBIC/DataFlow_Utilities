@@ -14,12 +14,12 @@ import com.arjuna.databroker.data.jee.DataConsumerFactory;
 public class JMSDataConsumerFactory implements DataConsumerFactory
 {
     @SuppressWarnings("unchecked")
-	public <T> DataConsumer<T> createDataConsumer(DataFlowNode dataFlowNode, String methodName, Class<T> dataClass)
+    public <T> DataConsumer<T> createDataConsumer(DataFlowNode dataFlowNode, String methodName, Class<T> dataClass)
         throws Exception
     {
-    	if (dataClass.isAssignableFrom(Serializable.class))
-    	    return (DataConsumer<T>) new JMSDataConsumerImpl<Serializable>(dataFlowNode, methodName);
-    	else
-    		return null;
+        if (Serializable.class.isAssignableFrom(dataClass))
+            return (DataConsumer<T>) new JMSDataConsumerImpl<Serializable>(dataFlowNode, methodName);
+        else
+            return null;
     }
 }
