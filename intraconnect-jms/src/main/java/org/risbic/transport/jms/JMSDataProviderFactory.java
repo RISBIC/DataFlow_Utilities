@@ -7,19 +7,34 @@
 package org.risbic.transport.jms;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.arjuna.databroker.data.DataFlowNode;
 import com.arjuna.databroker.data.DataProvider;
+import com.arjuna.databroker.data.connector.NamedDataProvider;
 import com.arjuna.databroker.data.jee.DataProviderFactory;
 
 public class JMSDataProviderFactory implements DataProviderFactory
 {
+    private static final Logger logger = Logger.getLogger(JMSDataProviderFactory.class.getName());
+
     @SuppressWarnings("unchecked")
-    public <T> DataProvider<T> createDataProvider(DataFlowNode dataFlowNode, Class<T> dataClass)
+    public <T> DataProvider<T> createDataProvider(DataFlowNode dataFlowNode, Type dataProviderType)
         throws Exception
     {
-        if (Serializable.class.isAssignableFrom(dataClass))
-            return (DataProvider<T>) new JMSDataProviderImpl<Serializable>();
-        else
-            return null;
+        logger.log(Level.FINE, "JMSDataProviderFactory.createDataProvider: " + dataProviderType);
+
+        if (dataProviderType instanceof ParameterizedType)
+        {
+            ParameterizedType dataProviderParameterizedType = (ParameterizedType) dataProviderType;
+
+            if (dataProviderParameterizedType.getRawType() instanceof NamedDataProvider)
+                if ((dataProviderParameterizedType.getActualTypeArguments().length == 1) && (dataProviderParameterizedType.getActualTypeArguments()[0] instanceof Serializable))
+                    return (DataProvider<T>) new JMSDataProviderImpl<Serializable>();
+        }
+
+        return null;
     }
 }
