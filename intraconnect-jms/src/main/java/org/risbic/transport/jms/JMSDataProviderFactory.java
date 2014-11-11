@@ -30,8 +30,8 @@ public class JMSDataProviderFactory implements DataProviderFactory
         {
             ParameterizedType dataProviderParameterizedType = (ParameterizedType) dataProviderType;
 
-            if (dataProviderParameterizedType.getRawType() instanceof NamedDataProvider)
-                if ((dataProviderParameterizedType.getActualTypeArguments().length == 1) && (dataProviderParameterizedType.getActualTypeArguments()[0] instanceof Serializable))
+            if (NamedDataProvider.class.isAssignableFrom((Class<?>) dataProviderParameterizedType.getRawType()))
+                if ((dataProviderParameterizedType.getActualTypeArguments().length == 1) && Serializable.class.isAssignableFrom((Class<?>) dataProviderParameterizedType.getActualTypeArguments()[0]))
                     return (DataProvider<T>) new JMSDataProviderImpl<Serializable>();
         }
 

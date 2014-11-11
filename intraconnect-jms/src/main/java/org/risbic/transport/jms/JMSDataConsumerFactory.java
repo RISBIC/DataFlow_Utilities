@@ -30,8 +30,8 @@ public class JMSDataConsumerFactory implements DataConsumerFactory
         {
             ParameterizedType dataConsumerParameterizedType = (ParameterizedType) dataConsumerType;
 
-            if (dataConsumerParameterizedType.getRawType() instanceof ReferrerDataConsumer)
-                if ((dataConsumerParameterizedType.getActualTypeArguments().length == 1) && (dataConsumerParameterizedType.getActualTypeArguments()[0] instanceof Serializable))
+            if (ReferrerDataConsumer.class.isAssignableFrom((Class<?>) dataConsumerParameterizedType.getRawType()))
+                if ((dataConsumerParameterizedType.getActualTypeArguments().length == 1) && Serializable.class.isAssignableFrom((Class<?>) dataConsumerParameterizedType.getActualTypeArguments()[0]))
                     return (DataConsumer<T>) new JMSDataConsumerImpl<Serializable>(dataFlowNode, methodName);
         }
 
