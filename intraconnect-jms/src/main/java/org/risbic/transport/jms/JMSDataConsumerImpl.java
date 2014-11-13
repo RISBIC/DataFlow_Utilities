@@ -18,14 +18,12 @@ import javax.jms.Message;
 import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
-
 import java.io.Serializable;
-
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import com.arjuna.databroker.data.DataConsumer;
 import com.arjuna.databroker.data.DataFlowNode;
-
 import com.arjuna.databroker.data.connector.ReferrerDataConsumer;
-import org.jboss.logging.Logger;
 
 /**
  * @author <a href="mailto:mtaylor@redhat.com">Martyn Taylor</a>
@@ -45,6 +43,36 @@ public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSData
    {
       this.dfNode = dfNode;
       this.methodName = methodName;
+   }
+
+   @Override
+   public Class<?> getNameClass()
+   {
+       return String.class;
+   }
+
+   @Override
+   public <N> void addReferredName(N name)
+   {
+       if (name instanceof String)
+       {
+           // TODO
+           logger.log(Level.SEVERE, "Unimplemented operation: addReferredName");
+       }
+       else
+           logger.log(Level.WARNING, "Unsupported name format: \"" + name + "\"");
+   }
+
+   @Override
+   public <N> void removeReferredName(N name)
+   {
+       if (name instanceof String)
+       {
+           // TODO
+           logger.log(Level.SEVERE, "Unimplemented operation: removeReferredName");
+       }
+       else
+           logger.log(Level.WARNING, "Unsupported name format: \"" + name + "\"");
    }
 
    @Override
