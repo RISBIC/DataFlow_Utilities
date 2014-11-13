@@ -21,7 +21,6 @@ import javax.jms.ObjectMessage;
 import java.io.Serializable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import com.arjuna.databroker.data.DataConsumer;
 import com.arjuna.databroker.data.DataFlowNode;
 import com.arjuna.databroker.data.connector.ReferrerDataConsumer;
 
@@ -52,24 +51,24 @@ public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSData
    }
 
    @Override
-   public <N> void addReferredName(N name)
+   public <N> void addReferredTo(N name)
    {
        if (name instanceof String)
        {
            // TODO
-           logger.log(Level.SEVERE, "Unimplemented operation: addReferredName");
+           logger.log(Level.SEVERE, "Unimplemented operation: addReferredTo");
        }
        else
            logger.log(Level.WARNING, "Unsupported name format: \"" + name + "\"");
    }
 
    @Override
-   public <N> void removeReferredName(N name)
+   public <N> void removeReferredTo(N name)
    {
        if (name instanceof String)
        {
            // TODO
-           logger.log(Level.SEVERE, "Unimplemented operation: removeReferredName");
+           logger.log(Level.SEVERE, "Unimplemented operation: removeReferredTo");
        }
        else
            logger.log(Level.WARNING, "Unsupported name format: \"" + name + "\"");
