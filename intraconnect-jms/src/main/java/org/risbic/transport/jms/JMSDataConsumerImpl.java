@@ -19,9 +19,11 @@ import javax.jms.MessageConsumer;
 import javax.jms.MessageListener;
 import javax.jms.ObjectMessage;
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.arjuna.databroker.data.DataFlowNode;
+import com.arjuna.databroker.data.connector.NamedDataProvider;
 import com.arjuna.databroker.data.connector.ReferrerDataConsumer;
 
 /**
@@ -48,6 +50,14 @@ public class JMSDataConsumerImpl<T extends Serializable> extends AbstractJMSData
    public Class<?> getNameClass()
    {
        return String.class;
+   }
+
+   @Override
+   public Collection<NamedDataProvider<T>> getDataProviders()
+   {
+       // TODO
+       logger.log(Level.SEVERE, "Unimplemented operation: getDataProviders");
+       return null;
    }
 
    @Override
